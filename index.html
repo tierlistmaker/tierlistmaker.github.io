@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Tier List Maker — Free Online Tier List Creator</title>
+  <meta name="description" content="Create, share, and rank anything with the free Tier List Maker. Drag and drop items into S, A, B, C, D tiers in seconds. No sign-up required." />
+  <meta name="keywords" content="tier list maker, create tier list, free tier list, online tier list, tier list creator, ranking tool, drag drop tier list" />
+  <link rel="canonical" href="https://tier-list-maker.com" />
+
+  <meta property="og:title" content="Tier List Maker — Free Online Tier List Creator" />
+  <meta property="og:description" content="Rank anything instantly. Drag items into tiers, customize, and share in one click." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tier-list-maker.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cyan: #00FFE0;
+      --cyan-dim: rgba(0, 255, 224, 0.12);
+      --cyan-glow: rgba(0, 255, 224, 0.25);
+      --purple: #9B5CFF;
+      --purple-dim: rgba(155, 92, 255, 0.12);
+      --bg: #0C0C10;
+      --bg2: #13131A;
+      --bg3: #1A1A24;
+      --border: rgba(255,255,255,0.08);
+      --border-accent: rgba(0, 255, 224, 0.3);
+      --text: #F0F0F5;
+      --text-muted: #888899;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(12,12,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--cyan); }
+    .nav-cta {
+      background: var(--cyan);
+      color: #0C0C10;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 20px;
+      border-radius: 6px;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* HERO */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 2rem 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 48px 1.25rem 40px; gap: 40px; }
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid var(--border-accent);
+      background: var(--cyan-dim);
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cyan);
+      color: #0C0C10;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 4px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--border); }
+    .hero-stat {
+      display: flex;
+      gap: 28px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* LIVE PREVIEW WIDGET */
+    .preview-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .preview-topbar {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #FF5F57; }
+    .dot-y { background: #FEBC2E; }
+    .dot-g { background: #28C840; }
+    .preview-title-bar {
+      font-size: 12px;
+      color: var(--text-muted);
+      flex: 1;
+      text-align: center;
+      font-family: var(--font-display);
+    }
+    .preview-body { padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .tier-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .tier-label {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .tier-label.s { background: #FF7070; color: #fff; }
+    .tier-label.a { background: #FFB347; color: #fff; }
+    .tier-label.b { background: #FFE347; color: #111; }
+    .tier-label.c { background: #79E47B; color: #111; }
+    .tier-label.d { background: #6EC6FF; color: #111; }
+    .tier-items {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      flex: 1;
+      background: var(--bg3);
+      padding: 6px 8px;
+      border-radius: 4px;
+      min-height: 44px;
+      align-items: center;
+    }
+    .tier-chip {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color 0.3s, transform 0.3s;
+      white-space: nowrap;
+    }
+    .tier-chip.highlight {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: scale(1.05);
+    }
+
+    /* SECTION SHARED */
+    section { padding: 80px 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .step-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      transition: border-color 0.2s;
+    }
+    .step-card:hover { border-color: var(--border-accent); }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      border: 1px solid var(--border-accent);
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* FEATURES */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .feature-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      transition: border-color 0.2s;
+    }
+    .feature-card:hover { border-color: rgba(155,92,255,0.35); }
+    .feature-icon {
+      width: 40px; height: 40px;
+      background: var(--purple-dim);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
+    .feature-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .feature-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* USE CASES */
+    .usecases { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .usecase-tag {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: var(--bg2);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .usecase-tag:hover { border-color: var(--border-accent); color: var(--cyan); }
+
+    /* SEO TEXT */
+    .seo-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 40px;
+    }
+    .seo-block h2 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .seo-block p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      max-width: 760px;
+      line-height: 1.75;
+    }
+    .seo-block p:last-child { margin-bottom: 0; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      gap: 16px;
+      transition: background 0.15s;
+    }
+    .faq-q:hover { background: var(--bg2); }
+    .faq-arrow {
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      color: var(--text-muted);
+    }
+    .faq-q[aria-expanded="true"] .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faq-a.open { display: block; }
+
+    /* CTA BAND */
+    .cta-band {
+      background: linear-gradient(135deg, var(--cyan-dim) 0%, var(--purple-dim) 100%);
+      border-top: 1px solid var(--border-accent);
+      border-bottom: 1px solid rgba(155,92,255,0.25);
+      text-align: center;
+      padding: 80px 2rem;
+    }
+    .cta-band h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+    .cta-band p { font-size: 17px; color: var(--text-muted); margin-bottom: 36px; }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .footer-logo span { color: var(--cyan); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: var(--text-muted); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    @media (max-width: 480px) {
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Tier<span>List</span>Maker</div>
+  <a class="nav-cta" href="https://tier-list-maker.com" rel="noopener">Create Free Tier List →</a>
+</nav>
+
+<!-- HERO -->
+<main>
+<section style="padding: 0;">
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Free &amp; No Sign-Up Required</div>
+      <h1>The <em>fastest</em> way to make a tier list</h1>
+      <p class="hero-sub">Drag, drop, and rank anything in seconds. Create shareable tier lists for games, movies, food, music — whatever you love most.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://tier-list-maker.com" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Start Ranking Now
+        </a>
+        <a class="btn-ghost" href="#how-it-works">See how it works ↓</a>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Free forever</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Account needed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Lists you can make</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE PREVIEW -->
+    <div class="preview-wrap" aria-label="Tier list preview demo">
+      <div class="preview-topbar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <div class="preview-title-bar">tier-list-maker.com</div>
+      </div>
+      <div class="preview-body" id="tier-preview">
+        <div class="tier-row">
+          <div class="tier-label s">S</div>
+          <div class="tier-items" id="tier-s"></div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-label a">A</div>
+          <div class="tier-items" id="tier-a"></div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-label b">B</div>
+          <div class="tier-items" id="tier-b"></div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-label c">C</div>
+          <div class="tier-items" id="tier-c"></div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-label d">D</div>
+          <div class="tier-items" id="tier-d"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-inner">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-heading">Make your first tier list in under a minute</h2>
+    <p class="section-sub">No tutorials needed. Just open the tool and start ranking.</p>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Choose a template or start blank</div>
+        <p class="step-desc">Pick from hundreds of pre-built templates — games, anime, sports, food, movies — or create a fully custom list from scratch.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Drag items into tiers</div>
+        <p class="step-desc">Simply drag any item into S, A, B, C, D tiers (or rename them anything you want). Reorder within tiers on the fly.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Share with one click</div>
+        <p class="step-desc">Download your tier list as an image or copy a shareable link. Post it on Reddit, Twitter, Discord — anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FEATURES -->
+<section>
+  <div class="section-inner">
+    <div class="section-eyebrow">Features</div>
+    <h2 class="section-heading">Everything you need to rank like a pro</h2>
+    <p class="section-sub">Built for speed and simplicity, with enough power for serious rankers.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Drag-and-drop interface</div>
+        <p class="feature-desc">Smooth, responsive drag-and-drop that works on desktop and mobile. Move items between tiers instantly without friction.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <div class="feature-title">Fully customizable</div>
+        <p class="feature-desc">Rename tiers, change tier colors, add your own images, and upload custom item sets to make any tier list uniquely yours.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📤</div>
+        <div class="feature-title">Easy sharing &amp; export</div>
+        <p class="feature-desc">Export as a high-resolution PNG to share anywhere, or generate a link others can view and copy to make their own version.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Works on any device</div>
+        <p class="feature-desc">Fully responsive — create tier lists on your phone, tablet, or desktop. No app download required; it runs in your browser.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <div class="feature-title">Hundreds of templates</div>
+        <p class="feature-desc">Jump-start your list with ready-made templates for popular games, anime, fast food chains, music genres, and much more.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">No sign-up, ever</div>
+        <p class="feature-desc">Use the full tool completely free without creating an account. Your tier lists are yours — we don't lock features behind logins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- USE CASES -->
+<section>
+  <div class="section-inner">
+    <div class="section-eyebrow">Use cases</div>
+    <h2 class="section-heading">Rank literally anything</h2>
+    <p class="section-sub">People use Tier List Maker to debate, compare, and rank all kinds of things. Here are just a few popular categories.</p>
+    <div class="usecases">
+      <span class="usecase-tag">Video games</span>
+      <span class="usecase-tag">Anime characters</span>
+      <span class="usecase-tag">Fast food chains</span>
+      <span class="usecase-tag">Marvel movies</span>
+      <span class="usecase-tag">Pokémon</span>
+      <span class="usecase-tag">Music albums</span>
+      <span class="usecase-tag">NBA players</span>
+      <span class="usecase-tag">Pizza toppings</span>
+      <span class="usecase-tag">Streaming services</span>
+      <span class="usecase-tag">TV shows</span>
+      <span class="usecase-tag">Fighting game characters</span>
+      <span class="usecase-tag">Smartphones</span>
+      <span class="usecase-tag">Superhero powers</span>
+      <span class="usecase-tag">Programming languages</span>
+      <span class="usecase-tag">Coffee shops</span>
+      <span class="usecase-tag">Roller coasters</span>
+      <span class="usecase-tag">Sushi types</span>
+      <span class="usecase-tag">K-pop groups</span>
+      <span class="usecase-tag">Sneaker brands</span>
+      <span class="usecase-tag">Horror movies</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- SEO TEXT BLOCK -->
+<section>
+  <div class="section-inner">
+    <div class="seo-block">
+      <h2>What is a tier list?</h2>
+      <p>A tier list is a ranking system that organizes items into ordered categories — most commonly labeled S, A, B, C, and D — from best to worst. Originating in competitive gaming communities, tier lists have become a universal way for fans and enthusiasts to compare, debate, and share opinions about virtually any topic.</p>
+      <p>A free online tier list maker like ours lets anyone create a tier list directly in their browser without downloading software or signing up for an account. You can rank characters from your favorite game, movies in a franchise, foods, sports teams, or anything else that matters to you.</p>
+      <p>Once you've finished ranking, you can download your tier list as an image or share a link. It's one of the most popular formats for community discussions on Reddit, Discord, and social media — because a tier list makes your opinions instantly visual and easy to debate.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FAQ -->
+<section>
+  <div class="section-inner">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-heading">Common questions</h2>
+    <p class="section-sub" style="margin-bottom: 36px;">Everything you need to know before you start ranking.</p>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Is the tier list maker really free?
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Yes — completely free with no hidden limits. You can create and export as many tier lists as you want without paying anything or creating an account.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Do I need to sign up or download anything?
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">No downloads, no sign-ups. Tier List Maker runs entirely in your web browser. Just open the page and start ranking immediately.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Can I add my own images to a tier list?
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Yes. You can upload any images from your device to use as items in your tier list, making it easy to create fully custom lists for any topic.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          How do I share my tier list?
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Click the share or export button to download your tier list as a PNG image, or copy a direct link that lets others view your list and remix it with their own rankings.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Does it work on mobile?
+          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Yes. The tool is designed to work on phones, tablets, and desktops alike. Touch drag-and-drop is fully supported on mobile browsers.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready to start ranking?</h2>
+  <p>It's free, instant, and no account needed. Make your first tier list in seconds.</p>
+  <a class="btn-primary" href="https://tier-list-maker.com" rel="noopener" style="display: inline-flex; font-size: 18px; padding: 16px 36px;">
+    Create a Tier List Free →
+  </a>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Tier<span>List</span>Maker</div>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="https://tier-list-maker.com">Home</a>
+    <a href="https://tier-list-maker.com">Templates</a>
+    <a href="https://tier-list-maker.com">Create</a>
+  </nav>
+  <div class="footer-copy">© 2024 tier-list-maker.com</div>
+</footer>
+
+<script>
+  const TIERS = {
+    s: ['The Godfather', 'Dark Souls', 'Pizza'],
+    a: ['Inception', 'Elden Ring', 'Sushi'],
+    b: ['Interstellar', 'Minecraft', 'Tacos'],
+    c: ['Avatar', 'Fortnite', 'Burgers'],
+    d: ['Cats (2019)', 'FIFA 23', 'Kale']
+  };
+
+  function renderTiers() {
+    Object.entries(TIERS).forEach(([tier, items]) => {
+      const el = document.getElementById('tier-' + tier);
+      el.innerHTML = items.map(item =>
+        `<span class="tier-chip">${item}</span>`
+      ).join('');
+    });
+  }
+
+  renderTiers();
+
+  let step = 0;
+  const animations = [
+    () => {
+      const chips = document.querySelectorAll('#tier-s .tier-chip');
+      chips.forEach(c => c.classList.add('highlight'));
+      setTimeout(() => chips.forEach(c => c.classList.remove('highlight')), 900);
+    },
+    () => {
+      const chips = document.querySelectorAll('#tier-a .tier-chip');
+      chips.forEach(c => c.classList.add('highlight'));
+      setTimeout(() => chips.forEach(c => c.classList.remove('highlight')), 900);
+    },
+    () => {
+      const allChips = document.querySelectorAll('.tier-chip');
+      const random = allChips[Math.floor(Math.random() * allChips.length)];
+      if (random) {
+        random.classList.add('highlight');
+        setTimeout(() => random.classList.remove('highlight'), 900);
+      }
+    }
+  ];
+
+  setInterval(() => {
+    animations[step % animations.length]();
+    step++;
+  }, 2200);
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', !expanded);
+      answer.classList.toggle('open', !expanded);
+    });
+  });
+</script>
+</body>
+</html>
