@@ -3,533 +3,212 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Tier List Maker — Free Online Tier List Creator</title>
-  <meta name="description" content="Create, share, and rank anything with the free Tier List Maker. Drag and drop items into S, A, B, C, D tiers in seconds. No sign-up required." />
-  <meta name="keywords" content="tier list maker, create tier list, free tier list, online tier list, tier list creator, ranking tool, drag drop tier list" />
-  <link rel="canonical" href="https://tiermaker.tier-list-maker.com" />
-
+  <title>Tier List Maker — Free Online Tier List Creator | TierMaker</title>
+  <meta name="description" content="The #1 free tier list maker. Create tier lists for anime, Pokémon, Brawl Stars, Genshin Impact, Marvel Rivals, BFDI, Dandy's World, food, and more. No sign-up needed." />
+  <link rel="canonical" href="https://tiermaker.tier-list-maker.com/" />
   <meta property="og:title" content="Tier List Maker — Free Online Tier List Creator" />
-  <meta property="og:description" content="Rank anything instantly. Drag items into tiers, customize, and share in one click." />
+  <meta property="og:description" content="Create tier lists for anime, Pokémon, games, food and more. Free, no sign-up, instant share." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="tiermaker.https://tier-list-maker.com" />
-
+  <meta property="og:url" content="https://tiermaker.tier-list-maker.com/" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Tier List Maker","url":"https://tier-list-maker.com","description":"Free online tier list maker. Drag and drop items into S, A, B, C, D tiers. No sign-up required.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --cyan: #00FFE0;
-      --cyan-dim: rgba(0, 255, 224, 0.12);
-      --cyan-glow: rgba(0, 255, 224, 0.25);
+      --cyan-dim: rgba(0,255,224,0.10);
+      --cyan-glow: rgba(0,255,224,0.22);
       --purple: #9B5CFF;
-      --purple-dim: rgba(155, 92, 255, 0.12);
+      --purple-dim: rgba(155,92,255,0.10);
       --bg: #0C0C10;
       --bg2: #13131A;
       --bg3: #1A1A24;
-      --border: rgba(255,255,255,0.08);
-      --border-accent: rgba(0, 255, 224, 0.3);
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(0,255,224,0.28);
       --text: #F0F0F5;
       --text-muted: #888899;
       --font-display: 'Space Grotesk', sans-serif;
       --font-body: 'Inter', sans-serif;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
 
     /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(12,12,16,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: -0.02em;
-    }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(12,12,16,0.90); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
     .nav-logo span { color: var(--cyan); }
-    .nav-cta {
-      background: var(--cyan);
-      color: #0C0C10;
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 14px;
-      padding: 8px 20px;
-      border-radius: 6px;
-      transition: opacity 0.15s;
-    }
-    .nav-cta:hover { opacity: 0.88; }
+    .nav-cta { background: var(--cyan); color: #0C0C10; font-family: var(--font-display); font-weight: 600; font-size: 14px; padding: 8px 20px; border-radius: 6px; transition: opacity 0.15s; white-space: nowrap; }
+    .nav-cta:hover { opacity: 0.85; }
 
     /* HERO */
-    .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 2rem 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; padding: 48px 1.25rem 40px; gap: 40px; }
-    }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      border: 1px solid var(--border-accent);
-      background: var(--cyan-dim);
-      padding: 5px 12px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--cyan);
-      flex-shrink: 0;
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(36px, 5vw, 58px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--cyan);
-    }
-    .hero-sub {
-      font-size: 18px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 36px;
-      max-width: 440px;
-    }
+    .hero { max-width: 1100px; margin: 0 auto; padding: 72px 2rem 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    @media (max-width: 768px) { .hero { grid-template-columns: 1fr; padding: 44px 1.25rem 36px; gap: 36px; } }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); border: 1px solid var(--border-accent); background: var(--cyan-dim); padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
+    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(34px, 5vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 18px; }
+    .hero h1 em { font-style: normal; color: var(--cyan); }
+    .hero-sub { font-size: 17px; color: var(--text-muted); line-height: 1.6; margin-bottom: 32px; max-width: 440px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--cyan);
-      color: #0C0C10;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 16px;
-      padding: 14px 28px;
-      border-radius: 8px;
-      transition: opacity 0.15s, transform 0.15s;
-    }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--cyan); color: #0C0C10; font-family: var(--font-display); font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 8px; transition: opacity 0.15s, transform 0.15s; }
     .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-    .btn-primary svg { width: 18px; height: 18px; flex-shrink: 0; }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 14px 4px;
-      border-bottom: 1px solid transparent;
-      transition: color 0.15s, border-color 0.15s;
-    }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 14px; font-weight: 500; padding: 14px 4px; border-bottom: 1px solid transparent; transition: color 0.15s, border-color 0.15s; }
     .btn-ghost:hover { color: var(--text); border-color: var(--border); }
-    .hero-stat {
-      display: flex;
-      gap: 28px;
-      margin-top: 40px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
-    .stat-item {}
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--text);
-    }
+    .hero-stat { display: flex; gap: 28px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .stat-num { font-family: var(--font-display); font-size: 24px; font-weight: 700; }
     .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
-    /* LIVE PREVIEW WIDGET */
-    .preview-wrap {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .preview-topbar {
-      background: var(--bg3);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    /* PREVIEW */
+    .preview-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .preview-topbar { background: var(--bg3); border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
     .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-r { background: #FF5F57; }
-    .dot-y { background: #FEBC2E; }
-    .dot-g { background: #28C840; }
-    .preview-title-bar {
-      font-size: 12px;
-      color: var(--text-muted);
-      flex: 1;
-      text-align: center;
-      font-family: var(--font-display);
-    }
-    .preview-body { padding: 16px; display: flex; flex-direction: column; gap: 6px; }
-    .tier-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .tier-label {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
+    .dot-r { background: #FF5F57; } .dot-y { background: #FEBC2E; } .dot-g { background: #28C840; }
+    .preview-title-bar { font-size: 12px; color: var(--text-muted); flex: 1; text-align: center; font-family: var(--font-display); }
+    .preview-body { padding: 14px; display: flex; flex-direction: column; gap: 5px; }
+    .tier-row { display: flex; align-items: center; gap: 7px; border-radius: 6px; overflow: hidden; }
+    .tier-label { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 17px; flex-shrink: 0; }
     .tier-label.s { background: #FF7070; color: #fff; }
     .tier-label.a { background: #FFB347; color: #fff; }
     .tier-label.b { background: #FFE347; color: #111; }
     .tier-label.c { background: #79E47B; color: #111; }
     .tier-label.d { background: #6EC6FF; color: #111; }
-    .tier-items {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      flex: 1;
-      background: var(--bg3);
-      padding: 6px 8px;
-      border-radius: 4px;
-      min-height: 44px;
-      align-items: center;
-    }
-    .tier-chip {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text);
-      transition: border-color 0.3s, transform 0.3s;
-      white-space: nowrap;
-    }
-    .tier-chip.highlight {
-      border-color: var(--cyan);
-      color: var(--cyan);
-      transform: scale(1.05);
-    }
+    .tier-items { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; background: var(--bg3); padding: 5px 7px; border-radius: 4px; min-height: 42px; align-items: center; }
+    .tier-chip { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 4px 9px; font-size: 11px; font-weight: 500; color: var(--text); transition: border-color 0.3s, transform 0.3s; white-space: nowrap; }
+    .tier-chip.highlight { border-color: var(--cyan); color: var(--cyan); transform: scale(1.06); }
 
-    /* SECTION SHARED */
-    section { padding: 80px 2rem; }
+    /* SHARED */
+    section { padding: 64px 2rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 12px;
-    }
-    .section-heading {
-      font-family: var(--font-display);
-      font-size: clamp(26px, 3.5vw, 40px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 17px;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin-bottom: 56px;
-    }
+    .section-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 10px; }
+    .section-heading { font-family: var(--font-display); font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px; }
+    .section-sub { font-size: 15px; color: var(--text-muted); max-width: 520px; margin-bottom: 36px; }
     .divider { border: none; border-top: 1px solid var(--border); }
 
-    /* HOW IT WORKS */
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-    .step-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 28px 24px;
-      transition: border-color 0.2s;
-    }
-    .step-card:hover { border-color: var(--border-accent); }
-    .step-num {
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--cyan);
-      background: var(--cyan-dim);
-      border: 1px solid var(--border-accent);
-      width: 32px; height: 32px;
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-    }
-    .step-title {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-    .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    /* FILTER BAR */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .filter-btn { font-family: var(--font-display); font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 100px; border: 1px solid var(--border); background: var(--bg2); color: var(--text-muted); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+    .filter-btn:hover { border-color: var(--border-accent); color: var(--cyan); }
+    .filter-btn.active { background: var(--cyan-dim); border-color: var(--border-accent); color: var(--cyan); }
 
-    /* FEATURES */
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .feature-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 28px 24px;
-      transition: border-color 0.2s;
-    }
-    .feature-card:hover { border-color: rgba(155,92,255,0.35); }
-    .feature-icon {
-      width: 40px; height: 40px;
-      background: var(--purple-dim);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 18px;
-      font-size: 20px;
-    }
-    .feature-title {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-    .feature-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    /* SEARCH */
+    .search-wrap { position: relative; margin-bottom: 28px; max-width: 380px; }
+    .search-input { width: 100%; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px 10px 38px; font-family: var(--font-body); font-size: 14px; color: var(--text); outline: none; transition: border-color 0.15s; }
+    .search-input::placeholder { color: var(--text-muted); }
+    .search-input:focus { border-color: var(--border-accent); }
+    .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
 
-    /* USE CASES */
-    .usecases { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    .usecase-tag {
-      font-size: 13px;
-      font-weight: 500;
-      padding: 7px 14px;
-      border-radius: 100px;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      background: var(--bg2);
-      transition: border-color 0.2s, color 0.2s;
-      cursor: default;
-    }
-    .usecase-tag:hover { border-color: var(--border-accent); color: var(--cyan); }
+    /* LINK GRID */
+    .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    @media (max-width: 480px) { .link-grid { grid-template-columns: 1fr 1fr; gap: 10px; } }
 
-    /* SEO TEXT */
-    .seo-block {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 40px;
-    }
-    .seo-block h2 {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      letter-spacing: -0.02em;
-    }
-    .seo-block p {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      max-width: 760px;
-      line-height: 1.75;
-    }
-    .seo-block p:last-child { margin-bottom: 0; }
+    .link-card { display: flex; align-items: center; gap: 10px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; transition: border-color 0.18s, background 0.18s, transform 0.15s; cursor: pointer; position: relative; overflow: hidden; text-decoration: none; }
+    .link-card:hover { border-color: var(--border-accent); background: var(--bg3); transform: translateY(-2px); }
+    .link-card:hover .card-arrow { color: var(--cyan); opacity: 1; transform: translateX(2px); }
+    .link-card:hover .card-icon { background: var(--cyan-dim); }
 
-    /* FAQ */
-    .faq-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-q {
-      width: 100%;
-      background: none;
-      border: none;
-      text-align: left;
-      padding: 20px 24px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-display);
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--text);
-      gap: 16px;
-      transition: background 0.15s;
-    }
-    .faq-q:hover { background: var(--bg2); }
-    .faq-arrow {
-      flex-shrink: 0;
-      transition: transform 0.25s;
-      color: var(--text-muted);
-    }
-    .faq-q[aria-expanded="true"] .faq-arrow { transform: rotate(180deg); }
-    .faq-a {
-      display: none;
-      padding: 0 24px 20px;
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    .faq-a.open { display: block; }
+    .card-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; transition: background 0.18s; }
+    .card-body { flex: 1; min-width: 0; }
+    .card-title { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
+    .card-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.3; }
+    .card-arrow { color: var(--text-muted); opacity: 0; transition: opacity 0.18s, color 0.18s, transform 0.18s; flex-shrink: 0; }
+
+    /* FEATURED CARDS (large) */
+    .featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 48px; }
+    .featured-card { display: flex; flex-direction: column; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 22px 20px; transition: border-color 0.18s, transform 0.15s; text-decoration: none; }
+    .featured-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+    .featured-card:hover .featured-arrow { color: var(--cyan); }
+    .featured-icon { font-size: 28px; margin-bottom: 12px; }
+    .featured-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 5px; letter-spacing: -0.01em; }
+    .featured-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; flex: 1; }
+    .featured-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .featured-label { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--cyan); }
+    .featured-arrow { color: var(--text-muted); transition: color 0.18s; }
+
+    /* NO RESULTS */
+    .no-results { display: none; text-align: center; padding: 48px 20px; color: var(--text-muted); font-size: 14px; }
+    .no-results.visible { display: block; }
+
+    /* TAGS */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-muted); background: var(--bg2); transition: border-color 0.2s, color 0.2s; }
+    .tag:hover { border-color: var(--border-accent); color: var(--cyan); }
 
     /* CTA BAND */
-    .cta-band {
-      background: linear-gradient(135deg, var(--cyan-dim) 0%, var(--purple-dim) 100%);
-      border-top: 1px solid var(--border-accent);
-      border-bottom: 1px solid rgba(155,92,255,0.25);
-      text-align: center;
-      padding: 80px 2rem;
-    }
-    .cta-band h2 {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 14px;
-    }
-    .cta-band p { font-size: 17px; color: var(--text-muted); margin-bottom: 36px; }
+    .cta-band { background: linear-gradient(135deg, var(--cyan-dim) 0%, var(--purple-dim) 100%); border-top: 1px solid var(--border-accent); border-bottom: 1px solid rgba(155,92,255,0.2); text-align: center; padding: 72px 2rem; }
+    .cta-band h2 { font-family: var(--font-display); font-size: clamp(26px, 4vw, 44px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .cta-band p { font-size: 16px; color: var(--text-muted); margin-bottom: 32px; }
+
+    /* FAQ */
+    .faq-list { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 18px 22px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-display); font-size: 15px; font-weight: 500; color: var(--text); gap: 14px; transition: background 0.15s; }
+    .faq-q:hover { background: var(--bg2); }
+    .faq-arrow-icon { flex-shrink: 0; transition: transform 0.25s; color: var(--text-muted); }
+    .faq-q[aria-expanded="true"] .faq-arrow-icon { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 22px 18px; font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .faq-a.open { display: block; }
 
     /* FOOTER */
-    footer {
-      padding: 40px 2rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .footer-logo {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 16px;
-    }
+    footer { border-top: 1px solid var(--border); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 32px 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+    .footer-logo { font-family: var(--font-display); font-weight: 700; font-size: 16px; }
     .footer-logo span { color: var(--cyan); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 14px; color: var(--text-muted); transition: color 0.15s; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.15s; }
     .footer-links a:hover { color: var(--text); }
-    .footer-copy { font-size: 13px; color: var(--text-muted); }
-    @media (max-width: 480px) {
-      footer { flex-direction: column; align-items: flex-start; }
-    }
+    .footer-copy { font-size: 12px; color: var(--text-muted); }
+    @media (max-width: 500px) { .footer-inner { flex-direction: column; align-items: flex-start; } }
+
+    /* HIDDEN for filter */
+    .link-card[data-hidden="true"] { display: none; }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Tier<span>List</span>Maker</div>
-  <a class="nav-cta" href="https://tier-list-maker.com" rel="noopener">Create Free Tier List →</a>
+  <a class="nav-cta" href="https://tier-list-maker.com" rel="noopener">Create Free →</a>
 </nav>
 
-<!-- HERO -->
 <main>
-<section style="padding: 0;">
+
+<!-- HERO -->
+<section style="padding:0;">
   <div class="hero">
     <div>
-      <div class="hero-eyebrow">Free &amp; No Sign-Up Required</div>
-      <h1>The <em>fastest</em> and <em>easiest</em> way to make a tier list</h1>
-      <p class="hero-sub">Drag, drop, and rank anything in seconds. Create shareable tier lists for games, movies, food, music — whatever you love most.</p>
+      <div class="hero-eyebrow">Free · No Sign-Up · Instant Share</div>
+      <h1>The <em>fastest</em> tier list maker online</h1>
+      <p class="hero-sub">Drag and drop anything into S, A, B, C, D tiers in seconds. Pick a template below — anime, games, food, sports, and hundreds more.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="https://tier-list-maker.com" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-          Start Ranking Now
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Start Ranking Free
         </a>
-        <a class="btn-ghost" href="#how-it-works">See how it works ↓</a>
+        <a class="btn-ghost" href="#templates">Browse templates ↓</a>
       </div>
       <div class="hero-stat">
-        <div class="stat-item">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Free forever</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">0</div>
-          <div class="stat-label">Account needed</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Lists you can make</div>
-        </div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Free forever</div></div>
+        <div><div class="stat-num">0</div><div class="stat-label">Account needed</div></div>
+        <div><div class="stat-num">∞</div><div class="stat-label">Lists you can make</div></div>
       </div>
     </div>
-
-    <!-- LIVE PREVIEW -->
-    <div class="preview-wrap" aria-label="Tier list preview demo">
+    <div class="preview-wrap" aria-label="Tier list demo">
       <div class="preview-topbar">
-        <div class="dot dot-r"></div>
-        <div class="dot dot-y"></div>
-        <div class="dot dot-g"></div>
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
         <div class="preview-title-bar">tier-list-maker.com</div>
       </div>
-      <div class="preview-body" id="tier-preview">
-        <div class="tier-row">
-          <div class="tier-label s">S</div>
-          <div class="tier-items" id="tier-s"></div>
-        </div>
-        <div class="tier-row">
-          <div class="tier-label a">A</div>
-          <div class="tier-items" id="tier-a"></div>
-        </div>
-        <div class="tier-row">
-          <div class="tier-label b">B</div>
-          <div class="tier-items" id="tier-b"></div>
-        </div>
-        <div class="tier-row">
-          <div class="tier-label c">C</div>
-          <div class="tier-items" id="tier-c"></div>
-        </div>
-        <div class="tier-row">
-          <div class="tier-label d">D</div>
-          <div class="tier-items" id="tier-d"></div>
-        </div>
+      <div class="preview-body">
+        <div class="tier-row"><div class="tier-label s">S</div><div class="tier-items" id="tier-s"></div></div>
+        <div class="tier-row"><div class="tier-label a">A</div><div class="tier-items" id="tier-a"></div></div>
+        <div class="tier-row"><div class="tier-label b">B</div><div class="tier-items" id="tier-b"></div></div>
+        <div class="tier-row"><div class="tier-label c">C</div><div class="tier-items" id="tier-c"></div></div>
+        <div class="tier-row"><div class="tier-label d">D</div><div class="tier-items" id="tier-d"></div></div>
       </div>
     </div>
   </div>
@@ -537,118 +216,491 @@
 
 <hr class="divider" />
 
-<!-- HOW IT WORKS -->
-<section id="how-it-works">
-  <div class="section-inner">
-    <div class="section-eyebrow">How it works</div>
-    <h2 class="section-heading">Make your first tier list in under a minute</h2>
-    <p class="section-sub">No tutorials needed. Just open the tool and start ranking.</p>
-    <div class="steps">
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <div class="step-title">Choose a template or start blank</div>
-        <p class="step-desc">Pick from hundreds of pre-built templates — games, anime, sports, food, movies — or create a fully custom list from scratch.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <div class="step-title">Drag items into tiers</div>
-        <p class="step-desc">Simply drag any item into S, A, B, C, D tiers (or rename them anything you want). Reorder within tiers on the fly.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">3</div>
-        <div class="step-title">Share with one click</div>
-        <p class="step-desc">Download your tier list as an image or copy a shareable link. Post it on Reddit, Twitter, Discord — anywhere.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- FEATURES -->
+<!-- FEATURED / TOP PICKS -->
 <section>
   <div class="section-inner">
-    <div class="section-eyebrow">Features</div>
-    <h2 class="section-heading">Everything you need to rank like a pro</h2>
-    <p class="section-sub">Built for speed and simplicity, with enough power for serious rankers.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-title">Drag-and-drop interface</div>
-        <p class="feature-desc">Smooth, responsive drag-and-drop that works on desktop and mobile. Move items between tiers instantly without friction.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎨</div>
-        <div class="feature-title">Fully customizable</div>
-        <p class="feature-desc">Rename tiers, change tier colors, add your own images, and upload custom item sets to make any tier list uniquely yours.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📤</div>
-        <div class="feature-title">Easy sharing &amp; export</div>
-        <p class="feature-desc">Export as a high-resolution PNG to share anywhere, or generate a link others can view and copy to make their own version.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <div class="feature-title">Works on any device</div>
-        <p class="feature-desc">Fully responsive — create tier lists on your phone, tablet, or desktop. No app download required; it runs in your browser.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏆</div>
-        <div class="feature-title">Hundreds of templates</div>
-        <p class="feature-desc">Jump-start your list with ready-made templates for popular games, anime, fast food chains, music genres, and much more.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <div class="feature-title">No sign-up, ever</div>
-        <p class="feature-desc">Use the full tool completely free without creating an account. Your tier lists are yours — we don't lock features behind logins.</p>
-      </div>
+    <div class="section-eyebrow">Most popular</div>
+    <h2 class="section-heading">Top tier list templates</h2>
+    <p class="section-sub">The most-used templates on tier-list-maker.com — jump straight in.</p>
+    <div class="featured-grid">
+
+      <a class="featured-card" href="https://tier-list-maker.com/bfdi-tier-list/" rel="noopener">
+        <div class="featured-icon">🎯</div>
+        <div class="featured-title">BFDI Tier List</div>
+        <div class="featured-desc">Rank every Battle for Dream Island character across all seasons. All character images pre-loaded.</div>
+        <div class="featured-footer"><span class="featured-label">Open →</span><svg class="featured-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a class="featured-card" href="https://tier-list-maker.com/dandys-world-tier-list/" rel="noopener">
+        <div class="featured-icon">🧸</div>
+        <div class="featured-title">Dandy's World Tier List</div>
+        <div class="featured-desc">Rank toons, skins, trinkets, and ships from Dandy's World. Updated for the latest patch.</div>
+        <div class="featured-footer"><span class="featured-label">Open →</span><svg class="featured-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a class="featured-card" href="https://tier-list-maker.com/anime-tier-list/" rel="noopener">
+        <div class="featured-icon">🌸</div>
+        <div class="featured-title">Anime Tier List</div>
+        <div class="featured-desc">Rank anime series, characters, or waifus. Hundreds of shows covered — from Naruto to Jujutsu Kaisen.</div>
+        <div class="featured-footer"><span class="featured-label">Open →</span><svg class="featured-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a class="featured-card" href="https://tier-list-maker.com/pokemon-tier-list/" rel="noopener">
+        <div class="featured-icon">🃏</div>
+        <div class="featured-title">Pokémon Tier List</div>
+        <div class="featured-desc">Rank starters, legendaries, or your full competitive roster. Every generation covered.</div>
+        <div class="featured-footer"><span class="featured-label">Open →</span><svg class="featured-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a class="featured-card" href="https://tier-list-maker.com/tier-list-maker-marvel-rivals/" rel="noopener">
+        <div class="featured-icon">⚔️</div>
+        <div class="featured-title">Marvel Rivals Tier List</div>
+        <div class="featured-desc">S-tier picks for every ranked season. All heroes pre-loaded and updated each patch.</div>
+        <div class="featured-footer"><span class="featured-label">Open →</span><svg class="featured-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
+      <a class="featured-card" href="https://tier-list-maker.com/tier-list-maker-unblocked/" rel="noopener">
+        <div class="featured-icon">🔓</div>
+        <div class="featured-title">Tier List Maker Unblocked</div>
+        <div class="featured-desc">Full tier list maker — no restrictions, no login, no filters. Works anywhere, on any network.</div>
+        <div class="featured-footer"><span class="featured-label">Open →</span><svg class="featured-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+
     </div>
   </div>
 </section>
 
 <hr class="divider" />
 
-<!-- USE CASES -->
-<section>
+<!-- ALL TEMPLATES -->
+<section id="templates">
   <div class="section-inner">
-    <div class="section-eyebrow">Use cases</div>
-    <h2 class="section-heading">Rank literally anything</h2>
-    <p class="section-sub">People use Tier List Maker to debate, compare, and rank all kinds of things. Here are just a few popular categories.</p>
-    <div class="usecases">
-      <span class="usecase-tag">Video games</span>
-      <span class="usecase-tag">Anime characters</span>
-      <span class="usecase-tag">Fast food chains</span>
-      <span class="usecase-tag">Marvel movies</span>
-      <span class="usecase-tag">Pokémon</span>
-      <span class="usecase-tag">Music albums</span>
-      <span class="usecase-tag">NBA players</span>
-      <span class="usecase-tag">Pizza toppings</span>
-      <span class="usecase-tag">Streaming services</span>
-      <span class="usecase-tag">TV shows</span>
-      <span class="usecase-tag">Fighting game characters</span>
-      <span class="usecase-tag">Smartphones</span>
-      <span class="usecase-tag">Superhero powers</span>
-      <span class="usecase-tag">Programming languages</span>
-      <span class="usecase-tag">Coffee shops</span>
-      <span class="usecase-tag">Roller coasters</span>
-      <span class="usecase-tag">Sushi types</span>
-      <span class="usecase-tag">K-pop groups</span>
-      <span class="usecase-tag">Sneaker brands</span>
-      <span class="usecase-tag">Horror movies</span>
+    <div class="section-eyebrow">All templates</div>
+    <h2 class="section-heading">Browse every tier list</h2>
+    <p class="section-sub">Filter by category or search by name. Every template is free — open and start ranking instantly.</p>
+
+    <!-- Search -->
+    <div class="search-wrap">
+      <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input class="search-input" id="search-input" type="search" placeholder="Search templates…" autocomplete="off" />
     </div>
-  </div>
-</section>
 
-<hr class="divider" />
+    <!-- Category filters -->
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-cat="all">All</button>
+      <button class="filter-btn" data-cat="games">🎮 Games</button>
+      <button class="filter-btn" data-cat="anime">🌸 Anime</button>
+      <button class="filter-btn" data-cat="food">🍕 Food & Drink</button>
+      <button class="filter-btn" data-cat="sports">⚽ Sports</button>
+      <button class="filter-btn" data-cat="tv">📺 TV & Movies</button>
+      <button class="filter-btn" data-cat="misc">✨ Everything Else</button>
+    </div>
 
-<!-- SEO TEXT BLOCK -->
-<section>
-  <div class="section-inner">
-    <div class="seo-block">
-      <h2>What is a tier list?</h2>
-      <p>A tier list is a ranking system that organizes items into ordered categories — most commonly labeled S, A, B, C, and D — from best to worst. Originating in competitive gaming communities, tier lists have become a universal way for fans and enthusiasts to compare, debate, and share opinions about virtually any topic.</p>
-      <p>A free online tier list maker like ours lets anyone create a tier list directly in their browser without downloading software or signing up for an account. You can rank characters from your favorite game, movies in a franchise, foods, sports teams, or anything else that matters to you.</p>
-      <p>Once you've finished ranking, you can download your tier list as an image or share a link. It's one of the most popular formats for community discussions on Reddit, Discord, and social media — because a tier list makes your opinions instantly visual and easy to debate.</p>
+    <!-- Cards grid -->
+    <div class="link-grid" id="link-grid">
+
+      <!-- GAMES -->
+      <a class="link-card" href="https://tier-list-maker.com/1000-video-games-tier-list/" rel="noopener" data-cat="games" data-title="1000 Video Games Tier List">
+        <div class="card-icon">🎮</div><div class="card-body"><div class="card-title">1000 Video Games</div><div class="card-sub">Tier list maker</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/tier-list-maker-brawl-stars/" rel="noopener" data-cat="games" data-title="Brawl Stars Tier List Maker">
+        <div class="card-icon">💥</div><div class="card-body"><div class="card-title">Brawl Stars</div><div class="card-sub">Tier list maker</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/clash-royale-tier-list/" rel="noopener" data-cat="games" data-title="Clash Royale Tier List">
+        <div class="card-icon">👑</div><div class="card-body"><div class="card-title">Clash Royale</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/poppy-playtime-tier-list/" rel="noopener" data-cat="games" data-title="Poppy Playtime Tier List">
+        <div class="card-icon">🪆</div><div class="card-body"><div class="card-title">Poppy Playtime</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/roblox-games-tier-list/" rel="noopener" data-cat="games" data-title="Roblox Games Tier List">
+        <div class="card-icon">🟥</div><div class="card-body"><div class="card-title">Roblox Games</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/fnaf-characters-tier-list/" rel="noopener" data-cat="games" data-title="FNAF Characters Tier List">
+        <div class="card-icon">🐻</div><div class="card-body"><div class="card-title">FNAF Characters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/minecraft-tier-list/" rel="noopener" data-cat="games" data-title="Minecraft Tier List">
+        <div class="card-icon">⛏️</div><div class="card-body"><div class="card-title">Minecraft</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/genshin-impact-characters-tier-list/" rel="noopener" data-cat="games" data-title="Genshin Impact Characters Tier List">
+        <div class="card-icon">🌟</div><div class="card-body"><div class="card-title">Genshin Impact</div><div class="card-sub">Characters tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/honkai-star-rail-characters-tier-list/" rel="noopener" data-cat="games" data-title="Honkai Star Rail Characters Tier List">
+        <div class="card-icon">🚂</div><div class="card-body"><div class="card-title">Honkai: Star Rail</div><div class="card-sub">Characters tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/honkai-star-rail-tier-list/" rel="noopener" data-cat="games" data-title="Honkai Star Rail Tier List">
+        <div class="card-icon">⭐</div><div class="card-body"><div class="card-title">Honkai: Star Rail</div><div class="card-sub">Tier list maker</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/tier-list-maker-smash-ultimate/" rel="noopener" data-cat="games" data-title="Smash Ultimate Tier List Maker">
+        <div class="card-icon">🥊</div><div class="card-body"><div class="card-title">Smash Ultimate</div><div class="card-sub">Tier list maker</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/tier-list-maker-marvel-rivals/" rel="noopener" data-cat="games" data-title="Marvel Rivals Tier List Maker">
+        <div class="card-icon">⚔️</div><div class="card-body"><div class="card-title">Marvel Rivals</div><div class="card-sub">Tier list maker</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/marvel-rivals-characters-tier-list/" rel="noopener" data-cat="games" data-title="Marvel Rivals Characters Tier List">
+        <div class="card-icon">🦸</div><div class="card-body"><div class="card-title">Marvel Rivals Characters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/fortnite-tier-list/" rel="noopener" data-cat="games" data-title="Fortnite Tier List">
+        <div class="card-icon">🏗️</div><div class="card-body"><div class="card-title">Fortnite</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/geometry-dash-tier-list/" rel="noopener" data-cat="games" data-title="Geometry Dash Tier List">
+        <div class="card-icon">🔷</div><div class="card-body"><div class="card-title">Geometry Dash</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/hollow-knight-tier-list/" rel="noopener" data-cat="games" data-title="Hollow Knight Tier List">
+        <div class="card-icon">🐛</div><div class="card-body"><div class="card-title">Hollow Knight</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/roblox-rivals-tier-list/" rel="noopener" data-cat="games" data-title="Roblox Rivals Tier List">
+        <div class="card-icon">🎯</div><div class="card-body"><div class="card-title">Roblox Rivals</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/roblox-rivals-guns-tier-list/" rel="noopener" data-cat="games" data-title="Roblox Rivals Guns Tier List">
+        <div class="card-icon">🔫</div><div class="card-body"><div class="card-title">Roblox Rivals Guns</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/adopt-me-pets-tier-list/" rel="noopener" data-cat="games" data-title="Adopt Me Pets Tier List">
+        <div class="card-icon">🐾</div><div class="card-body"><div class="card-title">Adopt Me Pets</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/tier-list-maker-overwatch-2/" rel="noopener" data-cat="games" data-title="Overwatch 2 Tier List Maker">
+        <div class="card-icon">🎪</div><div class="card-body"><div class="card-title">Overwatch 2</div><div class="card-sub">Tier list maker</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/tom-clancys-rainbow-six-siege-tier-list/" rel="noopener" data-cat="games" data-title="Rainbow Six Siege Tier List">
+        <div class="card-icon">🪖</div><div class="card-body"><div class="card-title">Rainbow Six Siege</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/date-everything-tier-list/" rel="noopener" data-cat="games" data-title="Date Everything Tier List">
+        <div class="card-icon">💖</div><div class="card-body"><div class="card-title">Date Everything</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/beyblade-x-releases-tier-list/" rel="noopener" data-cat="games" data-title="Beyblade X Releases Tier List">
+        <div class="card-icon">🌀</div><div class="card-body"><div class="card-title">Beyblade X Releases</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/forsaken-c00lkidd-skin-tier-list/" rel="noopener" data-cat="games" data-title="Forsaken C00lkidd Skin Tier List">
+        <div class="card-icon">🎭</div><div class="card-body"><div class="card-title">Forsaken Skins</div><div class="card-sub">C00lkidd tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/arras-io-tanks-tier-list/" rel="noopener" data-cat="games" data-title="Arras.io Tanks Tier List">
+        <div class="card-icon">🔵</div><div class="card-body"><div class="card-title">Arras.io Tanks</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/my-singing-monsters-tier-list/" rel="noopener" data-cat="games" data-title="My Singing Monsters Tier List">
+        <div class="card-icon">🎵</div><div class="card-body"><div class="card-title">My Singing Monsters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/piggy-skins-tier-list/" rel="noopener" data-cat="games" data-title="Piggy Skins Tier List">
+        <div class="card-icon">🐷</div><div class="card-body"><div class="card-title">Piggy Skins</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- ANIME -->
+      <a class="link-card" href="https://tier-list-maker.com/jujutsu-kaisen-tier-list/" rel="noopener" data-cat="anime" data-title="Jujutsu Kaisen Tier List">
+        <div class="card-icon">🌀</div><div class="card-body"><div class="card-title">Jujutsu Kaisen</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/jjk-characters-tier-list/" rel="noopener" data-cat="anime" data-title="JJK Characters Tier List">
+        <div class="card-icon">👊</div><div class="card-body"><div class="card-title">JJK Characters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/demon-slayer-tier-list/" rel="noopener" data-cat="anime" data-title="Demon Slayer Tier List">
+        <div class="card-icon">🗡️</div><div class="card-body"><div class="card-title">Demon Slayer</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/one-piece-tier-list/" rel="noopener" data-cat="anime" data-title="One Piece Tier List">
+        <div class="card-icon">🏴‍☠️</div><div class="card-body"><div class="card-title">One Piece</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/waifu-tier-list/" rel="noopener" data-cat="anime" data-title="Waifu Tier List">
+        <div class="card-icon">✨</div><div class="card-body"><div class="card-title">Waifu</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/bluelock-characters-tier-list/" rel="noopener" data-cat="anime" data-title="Blue Lock Characters Tier List">
+        <div class="card-icon">⚽</div><div class="card-body"><div class="card-title">Blue Lock Characters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/naruto-characters-tier-list/" rel="noopener" data-cat="anime" data-title="Naruto Characters Tier List">
+        <div class="card-icon">🍃</div><div class="card-body"><div class="card-title">Naruto Characters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/naruto-tier-list/" rel="noopener" data-cat="anime" data-title="Naruto Tier List">
+        <div class="card-icon">🌀</div><div class="card-body"><div class="card-title">Naruto</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/jojos-tier-list/" rel="noopener" data-cat="anime" data-title="JoJo's Bizarre Adventure Tier List">
+        <div class="card-icon">💎</div><div class="card-body"><div class="card-title">JoJo's Bizarre Adventure</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/my-hero-academia-tier-list/" rel="noopener" data-cat="anime" data-title="My Hero Academia Tier List">
+        <div class="card-icon">🦸</div><div class="card-body"><div class="card-title">My Hero Academia</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/tadc-tier-list/" rel="noopener" data-cat="anime" data-title="TADC Tier List">
+        <div class="card-icon">🎪</div><div class="card-body"><div class="card-title">TADC</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/all-hazbin-hotel-tier-list/" rel="noopener" data-cat="anime" data-title="Hazbin Hotel Tier List">
+        <div class="card-icon">😈</div><div class="card-body"><div class="card-title">Hazbin Hotel</div><div class="card-sub">All characters tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/sonic-tier-list/" rel="noopener" data-cat="anime" data-title="Sonic Tier List">
+        <div class="card-icon">💨</div><div class="card-body"><div class="card-title">Sonic</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/ninjago-characters-tier-list/" rel="noopener" data-cat="anime" data-title="Ninjago Characters Tier List">
+        <div class="card-icon">🥷</div><div class="card-body"><div class="card-title">Ninjago Characters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/every-ben-10-alien-tier-list-no-reboot/" rel="noopener" data-cat="anime" data-title="Every Ben 10 Alien Tier List">
+        <div class="card-icon">👽</div><div class="card-body"><div class="card-title">Every Ben 10 Alien</div><div class="card-sub">No reboot tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/brain-rot-tier-list/" rel="noopener" data-cat="anime" data-title="Brain Rot Tier List">
+        <div class="card-icon">🧠</div><div class="card-body"><div class="card-title">Brain Rot / Italian Brainrot</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/skibidi-toilet-tier-list/" rel="noopener" data-cat="anime" data-title="Skibidi Toilet Tier List">
+        <div class="card-icon">🚽</div><div class="card-body"><div class="card-title">Skibidi Toilet</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- FOOD & DRINK -->
+      <a class="link-card" href="https://tier-list-maker.com/candy-tier-list/" rel="noopener" data-cat="food" data-title="Candy Tier List">
+        <div class="card-icon">🍬</div><div class="card-body"><div class="card-title">Candy</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/soda-tier-list/" rel="noopener" data-cat="food" data-title="Soda Tier List">
+        <div class="card-icon">🥤</div><div class="card-body"><div class="card-title">Soda</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/cereal-tier-list/" rel="noopener" data-cat="food" data-title="Cereal Tier List">
+        <div class="card-icon">🥣</div><div class="card-body"><div class="card-title">Cereal</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/chips-tier-list/" rel="noopener" data-cat="food" data-title="Chips Tier List">
+        <div class="card-icon">🥔</div><div class="card-body"><div class="card-title">Chips</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/soft-drinks-tier-list/" rel="noopener" data-cat="food" data-title="Soft Drinks Tier List">
+        <div class="card-icon">🫗</div><div class="card-body"><div class="card-title">Soft Drinks</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/creating-the-perfect-food-tier-list/" rel="noopener" data-cat="food" data-title="Perfect Food Tier List">
+        <div class="card-icon">🍕</div><div class="card-body"><div class="card-title">The Perfect Food</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- SPORTS -->
+      <a class="link-card" href="https://tier-list-maker.com/best-football-players-tier-list/" rel="noopener" data-cat="sports" data-title="Best Football Players Tier List">
+        <div class="card-icon">⚽</div><div class="card-body"><div class="card-title">Best Football Players</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/nfl-tier-lists/" rel="noopener" data-cat="sports" data-title="NFL Tier List">
+        <div class="card-icon">🏈</div><div class="card-body"><div class="card-title">NFL</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/soccer-club-tier-list/" rel="noopener" data-cat="sports" data-title="Soccer Club Tier List">
+        <div class="card-icon">🏆</div><div class="card-body"><div class="card-title">Soccer Clubs</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/english-football-tier-list/" rel="noopener" data-cat="sports" data-title="English Football Tier List">
+        <div class="card-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="card-body"><div class="card-title">English Football</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/24-25-premier-league-table-tier-list-maker/" rel="noopener" data-cat="sports" data-title="Premier League Tier List Maker">
+        <div class="card-icon">🥇</div><div class="card-body"><div class="card-title">Premier League Table</div><div class="card-sub">24/25 tier list maker</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/wwe-tier-list/" rel="noopener" data-cat="sports" data-title="WWE Tier List">
+        <div class="card-icon">🤼</div><div class="card-body"><div class="card-title">WWE</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/rappers-tier-list/" rel="noopener" data-cat="sports" data-title="Rappers Tier List">
+        <div class="card-icon">🎤</div><div class="card-body"><div class="card-title">Rappers</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- TV & MOVIES -->
+      <a class="link-card" href="https://tier-list-maker.com/squid-game-characters-tier-list/" rel="noopener" data-cat="tv" data-title="Squid Game Characters Tier List">
+        <div class="card-icon">🦑</div><div class="card-body"><div class="card-title">Squid Game Characters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/total-drama-character-tier-list/" rel="noopener" data-cat="tv" data-title="Total Drama Character Tier List">
+        <div class="card-icon">🏕️</div><div class="card-body"><div class="card-title">Total Drama Characters</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/all-mcu-movies-and-series-tier-list/" rel="noopener" data-cat="tv" data-title="All MCU Movies and Series Tier List">
+        <div class="card-icon">🎬</div><div class="card-body"><div class="card-title">All MCU Movies & Series</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/animated-disney-movies-tier-list/" rel="noopener" data-cat="tv" data-title="Animated Disney Movies Tier List">
+        <div class="card-icon">🏰</div><div class="card-body"><div class="card-title">Animated Disney Movies</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/pixar-movies-tier-list/" rel="noopener" data-cat="tv" data-title="Pixar Movies Tier List">
+        <div class="card-icon">💡</div><div class="card-body"><div class="card-title">Pixar Movies</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/star-wars-film-ranking-tier-list-maker/" rel="noopener" data-cat="tv" data-title="Star Wars Film Ranking Tier List Maker">
+        <div class="card-icon">⚡</div><div class="card-body"><div class="card-title">Star Wars Films</div><div class="card-sub">Ranking tier list maker</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/horror-tier-list/" rel="noopener" data-cat="tv" data-title="Horror Tier List">
+        <div class="card-icon">👻</div><div class="card-body"><div class="card-title">Horror</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/epic-the-musical-tier-list/" rel="noopener" data-cat="tv" data-title="Epic The Musical Tier List">
+        <div class="card-icon">🎭</div><div class="card-body"><div class="card-title">Epic the Musical</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/series-tier-list/" rel="noopener" data-cat="tv" data-title="Series Tier List">
+        <div class="card-icon">📺</div><div class="card-body"><div class="card-title">TV Series</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/film-tier-list/" rel="noopener" data-cat="tv" data-title="Film Tier List">
+        <div class="card-icon">🎞️</div><div class="card-body"><div class="card-title">Films</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/ultimate-cartoon-or-animated-series-tier-list-500/" rel="noopener" data-cat="tv" data-title="Ultimate Animated Series Tier List">
+        <div class="card-icon">🎨</div><div class="card-body"><div class="card-title">500 Animated Series</div><div class="card-sub">Ultimate tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/dandys-world-ship-tier-list/" rel="noopener" data-cat="tv" data-title="Dandy's World Ship Tier List">
+        <div class="card-icon">🚢</div><div class="card-body"><div class="card-title">Dandy's World Ships</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- MISC / EVERYTHING ELSE -->
+      <a class="link-card" href="https://tier-list-maker.com/countries-tier-list/" rel="noopener" data-cat="misc" data-title="Countries Tier List">
+        <div class="card-icon">🌍</div><div class="card-body"><div class="card-title">Countries</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/youtuber-tier-list/" rel="noopener" data-cat="misc" data-title="Youtuber Tier List">
+        <div class="card-icon">▶️</div><div class="card-body"><div class="card-title">YouTubers</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/youtube-tier-list/" rel="noopener" data-cat="misc" data-title="YouTube Tier List">
+        <div class="card-icon">📹</div><div class="card-body"><div class="card-title">YouTube</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/flags-tier-list/" rel="noopener" data-cat="misc" data-title="Flags Tier List">
+        <div class="card-icon">🚩</div><div class="card-body"><div class="card-title">Flags</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/car-brands-tier-list/" rel="noopener" data-cat="misc" data-title="Car Brands Tier List">
+        <div class="card-icon">🚗</div><div class="card-body"><div class="card-title">Car Brands</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/every-single-us-president-tier-list/" rel="noopener" data-cat="misc" data-title="Every US President Tier List">
+        <div class="card-icon">🇺🇸</div><div class="card-body"><div class="card-title">Every US President</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/animals-tier-list/" rel="noopener" data-cat="misc" data-title="Animals Tier List">
+        <div class="card-icon">🦁</div><div class="card-body"><div class="card-title">Animals</div><div class="card-sub">Tier list</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/tier-list-maker-free/" rel="noopener" data-cat="misc" data-title="Free Tier List Maker">
+        <div class="card-icon">🆓</div><div class="card-body"><div class="card-title">Free Tier List Maker</div><div class="card-sub">No sign-up required</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a class="link-card" href="https://tier-list-maker.com/bfdi-tier-list-2/" rel="noopener" data-cat="misc" data-title="BFDI Tier List 2">
+        <div class="card-icon">🎯</div><div class="card-body"><div class="card-title">BFDI Tier List 2</div><div class="card-sub">Second edition</div></div>
+        <svg class="card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+    </div>
+
+    <div class="no-results" id="no-results">No templates found. Try a different search or category.</div>
+
+    <div style="margin-top:32px; text-align:center;">
+      <a class="btn-primary" href="https://tier-list-maker.com" rel="noopener" style="display:inline-flex;">See All Templates on tier-list-maker.com →</a>
     </div>
   </div>
 </section>
@@ -660,129 +712,102 @@
   <div class="section-inner">
     <div class="section-eyebrow">FAQ</div>
     <h2 class="section-heading">Common questions</h2>
-    <p class="section-sub" style="margin-bottom: 36px;">Everything you need to know before you start ranking.</p>
-    <div class="faq-list" role="list">
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          Is the tier list maker really free?
-          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">Yes — completely free with no hidden limits. You can create and export as many tier lists as you want without paying anything or creating an account.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          Do I need to sign up or download anything?
-          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">No downloads, no sign-ups. Tier List Maker runs entirely in your web browser. Just open the page and start ranking immediately.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          Can I add my own images to a tier list?
-          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">Yes. You can upload any images from your device to use as items in your tier list, making it easy to create fully custom lists for any topic.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          How do I share my tier list?
-          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">Click the share or export button to download your tier list as a PNG image, or copy a direct link that lets others view your list and remix it with their own rankings.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          Does it work on mobile?
-          <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">Yes. The tool is designed to work on phones, tablets, and desktops alike. Touch drag-and-drop is fully supported on mobile browsers.</div>
-      </div>
-
+    <p class="section-sub" style="margin-bottom:32px;">Everything you need to know about the free tier list maker.</p>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Is the tier list maker completely free?<svg class="faq-arrow-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Yes — 100% free with no limits, no paywalls, and no account required. Create and export as many tier lists as you want forever.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Do I need to sign up or download anything?<svg class="faq-arrow-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">No downloads, no sign-ups. The tier list maker runs entirely in your browser — just open tier-list-maker.com and start ranking immediately.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Can I upload my own images?<svg class="faq-arrow-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Yes. Upload any images from your device and they become draggable items. Build a fully custom tier list for any topic — even ones without an existing template.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">How do I share my finished tier list?<svg class="faq-arrow-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Click Export to download your tier list as a PNG, or copy the shareable link. Post directly to Reddit, Discord, Twitter/X, TikTok, or anywhere your community hangs out.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Does it work on mobile?<svg class="faq-arrow-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Yes. Fully responsive with touch drag-and-drop on phones and tablets. No app needed — open it in your mobile browser and start ranking.</div></div>
     </div>
   </div>
 </section>
 
 <!-- CTA BAND -->
 <div class="cta-band">
-  <h2>Ready to start ranking?</h2>
-  <p>It's free, instant, and no account needed. Make your first tier list in seconds.</p>
-  <a class="btn-primary" href="https://tier-list-maker.com" rel="noopener" style="display: inline-flex; font-size: 18px; padding: 16px 36px;">
-    Create a Tier List Free →
-  </a>
+  <h2>Ready to make your tier list?</h2>
+  <p>Free, instant, no account needed. Rank literally anything.</p>
+  <a class="btn-primary" href="https://tier-list-maker.com" rel="noopener" style="display:inline-flex; font-size:18px; padding:16px 36px;">Open the Tier List Maker →</a>
 </div>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Tier<span>List</span>Maker</div>
-  <nav class="footer-links" aria-label="Footer navigation">
-    <a href="https://tier-list-maker.com">Home</a>
-    <a href="https://tier-list-maker.com">Templates</a>
-    <a href="https://tier-list-maker.com">Create</a>
-  </nav>
-  <div class="footer-copy">© 2024 tier-list-maker.com</div>
+  <div class="footer-inner">
+    <div class="footer-logo">Tier<span>List</span>Maker</div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://tier-list-maker.com">Home</a>
+      <a href="https://tier-list-maker.com">Templates</a>
+      <a href="https://tier-list-maker.com">Create</a>
+      <a href="https://tier-list-maker.com">Share</a>
+    </nav>
+    <div class="footer-copy">© 2025 tier-list-maker.com</div>
+  </div>
 </footer>
 
 <script>
+  /* Tier preview animation */
   const TIERS = {
-    s: ['The Godfather', 'Dark Souls', 'Pizza'],
-    a: ['Inception', 'Elden Ring', 'Sushi'],
-    b: ['Interstellar', 'Minecraft', 'Tacos'],
-    c: ['Avatar', 'Fortnite', 'Burgers'],
-    d: ['Cats (2019)', 'FIFA 23', 'Kale']
+    s:['Genshin','Marvel Rivals','Cookie Run'],
+    a:['Brawl Stars','BFDI','Pokémon'],
+    b:['Minecraft','Anime','Food'],
+    c:['FNAF','Dandy\'s World','Movies'],
+    d:['Fortnite Skins','Candy','Music']
   };
+  Object.entries(TIERS).forEach(([t,items])=>{
+    const el=document.getElementById('tier-'+t);
+    if(el) el.innerHTML=items.map(i=>`<span class="tier-chip">${i}</span>`).join('');
+  });
+  let step=0;
+  setInterval(()=>{
+    const all=document.querySelectorAll('.tier-chip');
+    all.forEach(c=>c.classList.remove('highlight'));
+    const t=all[step%all.length];
+    if(t){t.classList.add('highlight');setTimeout(()=>t.classList.remove('highlight'),900);}
+    step++;
+  },1800);
 
-  function renderTiers() {
-    Object.entries(TIERS).forEach(([tier, items]) => {
-      const el = document.getElementById('tier-' + tier);
-      el.innerHTML = items.map(item =>
-        `<span class="tier-chip">${item}</span>`
-      ).join('');
+  /* FAQ */
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const open=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',!open);
+      btn.nextElementSibling.classList.toggle('open',!open);
     });
+  });
+
+  /* Filter + Search */
+  const cards = Array.from(document.querySelectorAll('.link-card'));
+  let activecat = 'all';
+  let searchterm = '';
+
+  function applyFilters(){
+    let visible=0;
+    cards.forEach(c=>{
+      const cat=c.dataset.cat;
+      const title=(c.dataset.title||'').toLowerCase();
+      const catMatch = activecat==='all' || cat===activecat;
+      const searchMatch = searchterm==='' || title.includes(searchterm);
+      const show=catMatch && searchMatch;
+      c.style.display=show?'':'none';
+      if(show) visible++;
+    });
+    const nr=document.getElementById('no-results');
+    nr.classList.toggle('visible', visible===0);
   }
 
-  renderTiers();
-
-  let step = 0;
-  const animations = [
-    () => {
-      const chips = document.querySelectorAll('#tier-s .tier-chip');
-      chips.forEach(c => c.classList.add('highlight'));
-      setTimeout(() => chips.forEach(c => c.classList.remove('highlight')), 900);
-    },
-    () => {
-      const chips = document.querySelectorAll('#tier-a .tier-chip');
-      chips.forEach(c => c.classList.add('highlight'));
-      setTimeout(() => chips.forEach(c => c.classList.remove('highlight')), 900);
-    },
-    () => {
-      const allChips = document.querySelectorAll('.tier-chip');
-      const random = allChips[Math.floor(Math.random() * allChips.length)];
-      if (random) {
-        random.classList.add('highlight');
-        setTimeout(() => random.classList.remove('highlight'), 900);
-      }
-    }
-  ];
-
-  setInterval(() => {
-    animations[step % animations.length]();
-    step++;
-  }, 2200);
-
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      const answer = btn.nextElementSibling;
-      btn.setAttribute('aria-expanded', !expanded);
-      answer.classList.toggle('open', !expanded);
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activecat=btn.dataset.cat;
+      applyFilters();
     });
+  });
+
+  document.getElementById('search-input').addEventListener('input',e=>{
+    searchterm=e.target.value.toLowerCase().trim();
+    applyFilters();
   });
 </script>
 </body>
